@@ -11,6 +11,8 @@ import { ProductlistComponent } from './staysafe/productlist/productlist.compone
 import { CartComponent } from './staysafe/cart/cart.component';
 import { CartItemComponent } from './staysafe/cart/cart-item/cart-item.component';
 import { ProductitemComponent } from './staysafe/productlist/productitem/productitem.component';
+import { ServiceComponent } from './service/service.component';
+import { ProductComponent } from './service/product/product.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ProductitemComponent } from './staysafe/productlist/productitem/product
     ProductlistComponent,
     CartComponent,
     CartItemComponent,
-    ProductitemComponent
+    ProductitemComponent,
+    ServiceComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule
