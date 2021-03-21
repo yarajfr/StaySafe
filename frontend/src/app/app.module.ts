@@ -1,5 +1,7 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import {HttpClientModule} from "@angular/common/http";
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -11,8 +13,13 @@ import { ProductlistComponent } from './staysafe/productlist/productlist.compone
 import { CartComponent } from './staysafe/cart/cart.component';
 import { CartItemComponent } from './staysafe/cart/cart-item/cart-item.component';
 import { ProductitemComponent } from './staysafe/productlist/productitem/productitem.component';
-import { ServiceComponent } from './service/service.component';
-import { ProductComponent } from './service/product/product.component';
+import { FourcomponentsComponent } from './fourcomponents/fourcomponents.component';
+import { CreateComponent } from './fourcomponents/create/create.component';
+import { ReadComponent } from './fourcomponents/read/read.component';
+import { UpdateComponent } from './fourcomponents/update/update.component';
+import { DeleteComponent } from './fourcomponents/delete/delete.component';
+import {AppRoutingModule} from "./app-routing.module";
+
 
 @NgModule({
   declarations: [
@@ -26,11 +33,16 @@ import { ProductComponent } from './service/product/product.component';
     CartComponent,
     CartItemComponent,
     ProductitemComponent,
-    ServiceComponent,
-    ProductComponent
+    FourcomponentsComponent,
+    CreateComponent,
+    ReadComponent,
+    UpdateComponent,
+    DeleteComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
