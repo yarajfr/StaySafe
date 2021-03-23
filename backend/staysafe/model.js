@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-function getAll() {
+function getProduct() {
     return new Promise((resolve, reject) => {
         const query = 'SELECT * FROM product';
         connection.query(query, (error, results) => {
@@ -29,6 +29,5 @@ function getOneProduct(id) {
     });
 }
   module.exports = {
-    getAll,
-    getProduct(id) {return getOneProduct(id)}
+    getProduct, getProduct(id) {return getOneProduct(id)}
  };

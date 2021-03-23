@@ -7,6 +7,8 @@ const pool = mysql.createPool({
     database: 'StaySafe'
 })
 
+
+
 pool.getConnection((err, connection) => {
     if (err) {
         if (err.code === 'PROTOCOL_CONNECTION_LOST') {
@@ -22,5 +24,9 @@ pool.getConnection((err, connection) => {
     if (connection) connection.release()
     return
 });
+
+
+
+
 
 module.exports = pool

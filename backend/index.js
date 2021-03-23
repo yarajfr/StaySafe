@@ -7,10 +7,16 @@ const router = require("./staysafe/staysafeRouter");
 const { readProducts, readProduct } = require('./staysafe/controller');
 
 
-app.use(cors());
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'PUT', 'DELETE', 'PATCH', 'POST'],
+    allowedHeaders: 'Content-Type, Authorization, Origin, X-Requested-With, Accept'
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+
+
 app.get('/', function(req, res) {
     res.send();
 });

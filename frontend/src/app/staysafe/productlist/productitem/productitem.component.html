@@ -1,18 +1,86 @@
-<div class="card mb-4 shadow-sm">
+<!--<div class="card mb-4 shadow-sm">
   <img class="bd-placeholder-img card-img-top" width="100%"
        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMvB9JosDnVDGhBfGh6dQAzl1Q5LePZOBXuqD_KT6raBJvskqbZchsJUzXLgY3JYle1n_AGUUy&usqp=CAc">
 
   <div class="card-body">
-    <p class="card-text">
-      <strong>{{product.artikelbez}}</strong>
+    <p class="card-text"
+    <strong>{{p.artikelbez}}</strong>
     </p>
-    <p class="card-text">{{product.preis | currency:'ILS'}} }This is a wider card with supporting text below as a natural lead-in to additional content.
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
       This content is a little bit longer.</p>
     <div class="d-flex justify-content-between align-items-center">
       <div class="btn-group">
-        <button type="button" class="btn btn-sm btn-primary product-btn">Hinzufügen</button>
-        <button type="button" class="btn btn-sm btn-outline-secondary product-btn">Mehr Infos</button>
+        <button type="button" class="btn btn-sm btn-primary product-btn">Add to Cart</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary product-btn">View Details</button>
       </div>
     </div>
   </div>
+</div>-->
+<!--
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-4 col-sm-6" *ngFor="let p of product">
+      <div class="card my-2">
+        <img [src]="p.image" alt="{{p.artikelbez}}" width="200px" class="card-img-top" (click)="selectProduct(p.id)" style="cursor:pointer;">
+        <div class="card-header">
+          <div class="card-title">
+            <p>{{p.artikelbez | titlecase}}</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <h6>{{p.description.substr(0, 40)}} ....</h6>
+          <p class="lead">{{p.preis | currency:'USD'}}</p>
+        </div>
+
+        <div class="row d-flex justify-content-center border-primary my-3">
+          <div class="col-md-6 ">
+           &lt;!&ndash; <button class="btn btn-outline-primary btn-sm btn-block"
+                    [class.disabled]="p.quantity < 1"
+                    [class.btn-outline-danger]="p.quantity < 1"
+                    (click)="AddProduct(p.id)" [disabled]="p.quantity < 1">
+              {{ p.quantity < 1 ? "NO STOCK" : "Add To Cart"}}
+            </button>&ndash;&gt;
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
+
+-->
+
+<!--
+<table class="table table-striped table-hover">
+  <caption>List of Members</caption>
+  <thead>
+  <tr>
+    <th>Nr.</th>
+    <th>Vorname</th>
+    <th>Nachname</th>
+    <th>E-Mail</th>
+    <th>Edit</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let p of product; let i=index; trackBy: trackByData">
+    <td>{{ i+1 }}</td>
+    <td>{{p.artikelbez}}</td>
+    <td>{{p.image}}</td>
+    <td>{{p.description}}</td>
+    <td>{{p.quantity}}</td>
+    <td>{{p.preis}}</td>
+    <td><a [routerLink]="['/read/', product]">
+      <i-bs
+        name="pencil-square"
+        class="text-secondary"
+        width="1em"
+        height="1em">
+      </i-bs></a></td>
+  </tr>
+  </tbody>
+</table>
+-->
