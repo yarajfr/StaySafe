@@ -33,11 +33,22 @@
   </tbody>
 </table>-->
 
-<div class="card mb-4 shadow-sm">
-  <img class="bd-placeholder-img card-img-top p-2" width="100%"  />
+<!--
+<div class="row">
+  <div class=".col-xs-6">
+  </div>
+-->
 
-  <div class="card-body" *ngFor="let p of product; let i=index; trackBy: trackByData">
-    <p class="card-text"><img src="" ></p>
+
+
+<div class="card mb-lg-2 shadow-sm">
+  <div class="card-img text-center">
+  </div>
+
+  <div class="card-deck" *ngFor="let p of product; let i=index; trackBy: trackByData">
+    <div class="card">
+  <div class="card-body">
+     <img class="card-img-top" src="assets/Desinfektionsspray.jpg" style="width: 200px; height: 200px" >
     <p class="card-text">
       <strong>{{p.artikelbez}}</strong>
     </p>
@@ -53,3 +64,49 @@
     </div>
   </div>
 </div>
+  </div>
+</div>
+<!--
+<div class="row">
+  <div class="col-md-4" *ngFor="let product of productList">
+    <app-product-item [productItem]="product"></app-product-item>
+  </div>
+</div>-->
+<!--
+    <div class="card-deck" *ngFor="let p of product; let i=index; trackBy: trackByData">
+    <div class="card">
+      <img class="card-img-top" src="assets/Desinfektionsspray.jpg" style="width: 200px; height: 200px" >
+      <div class="card-body">
+        <h5 class="card-title">{{p.artikelbez}}</h5>
+        <p class="card-text">{{p.preis | currency:'EUR'}} </p>
+        <p class="card-text">{{p.description}}
+        </p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-primary product-btn" (click)="handleAddToCart()">Add to
+              Cart</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary product-btn">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" >
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">hi</h5>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+-->

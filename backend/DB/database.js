@@ -1,4 +1,5 @@
 const mysql = require('mysql')
+
 const pool = mysql.createPool({
     connectionLimit: 10,
     host: 'localhost',
@@ -24,9 +25,6 @@ pool.getConnection((err, connection) => {
     if (connection) connection.release()
     return
 });
-
-
-
 
 
 module.exports = pool

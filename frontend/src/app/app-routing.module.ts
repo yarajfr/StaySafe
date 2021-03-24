@@ -5,6 +5,7 @@ import { UpdateComponent } from './fourcomponents/update/update.component';
 import { ReadComponent } from './fourcomponents/read/read.component';
 import { DeleteComponent } from './fourcomponents/delete/delete.component';
 
+
 const routes: Routes = [
   { path: 'create', component: CreateComponent },
   { path: 'update', component: UpdateComponent },

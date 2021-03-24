@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const staysafeRouter = require('./staysafe/staysafeRouter');
 const router = require("./staysafe/staysafeRouter");
-const { readProducts, readProduct } = require('./staysafe/controller');
+const { readProducts, readProduct} = require('./staysafe/controller');
 
 
 app.use(cors({
@@ -12,6 +12,7 @@ app.use(cors({
     methods: ['GET', 'PUT', 'DELETE', 'PATCH', 'POST'],
     allowedHeaders: 'Content-Type, Authorization, Origin, X-Requested-With, Accept'
 }));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
@@ -25,15 +26,14 @@ app.get('/product', staysafeRouter);
 
 router.get('/product', readProducts);
 
-router.get('/author/:id', readProduct);
+router.get('/product/:id', readProduct);
 
 app.get('/staysafe', staysafeRouter);
+
 
 app.listen(8080, () => {
     console.log('Server listening on port 8080  http://localhost:8080');
 });
-
-
 
 
 module.exports = router;

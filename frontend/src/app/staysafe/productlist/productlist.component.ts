@@ -15,9 +15,30 @@ export class ProductlistComponent implements OnInit {
   product: Product[];
   selectedId: number;
 
+
   constructor(private cs: BackendService, private route: ActivatedRoute) {
   }
 
+  ngOnInit(): void {
+    this.selectedId = Number(this.route.snapshot.paramMap.get('id'));
+    if (this.selectedId === 0) {
+      this.readProduct();
+    } else {
+      console.log('id = ' + this.selectedId);
+    }
+  }
+
+  trackByData(index: number, data: Product): number {
+    return data.id;
+  }
+
+  readProduct(): void {
+    this.cs.getAll().subscribe(
+      (response: Data[]) => this.product = response,
+      error => console.log(error)
+    );
+  }
+/*
   ngOnInit() {
     this.cs.getProduct().subscribe((products) => {
       this.product = products;
@@ -33,6 +54,10 @@ export class ProductlistComponent implements OnInit {
       (response: Data[]) => this.product = response,
       error => console.log(error)
     );
+  }*/
+
+  handleAddToCart() {
+
   }
 }
 

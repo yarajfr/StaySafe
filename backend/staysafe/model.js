@@ -19,15 +19,7 @@ function getProduct() {
 
 }
 
-function getOneProduct(id) {
-    return new Promise((resolve, reject) => {
-        const query = 'SELECT * FROM product WHERE product_id=?';
-        connection.query(query, [id], (error, results) => {
-            if (error) reject(error);
-            else resolve(results[0]);
-        });
-    });
-}
+
   module.exports = {
-    getProduct, getProduct(id) {return getOneProduct(id)}
+    getProduct
  };

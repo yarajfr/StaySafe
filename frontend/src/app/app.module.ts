@@ -10,7 +10,6 @@ import { NavComponent } from './shared/nav/nav.component';
 import { StaysafeComponent } from './staysafe/staysafe.component';
 import { FiltersComponent } from './staysafe/filters/filters.component';
 import { ProductlistComponent } from './staysafe/productlist/productlist.component';
-import { ProductitemComponent} from "./staysafe/productlist/productitem/productitem.component";
 import { CartComponent } from './staysafe/cart/cart.component';
 import { CartItemComponent } from './staysafe/cart/cart-item/cart-item.component';
 import { FourcomponentsComponent } from './fourcomponents/fourcomponents.component';
@@ -24,7 +23,6 @@ import { LoginComponent } from './staysafe/login/login.component';
 import { RegisterComponent } from './staysafe/register/register.component';
 import { ProductComponent } from './staysafe/product/product.component';
 import { ProductReadComponent } from './product/product-read/product-read.component';
-import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 
 
@@ -37,7 +35,6 @@ import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
     StaysafeComponent,
     FiltersComponent,
     ProductlistComponent,
-    ProductitemComponent,
     CartComponent,
     CartItemComponent,
     FourcomponentsComponent,
@@ -55,7 +52,6 @@ import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgxBootstrapIconsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

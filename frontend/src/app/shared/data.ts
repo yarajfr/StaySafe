@@ -1,4 +1,4 @@
-export class Product{
+export interface Data {
 
   id: number;
   image: string;
@@ -7,4 +7,5 @@ export class Product{
   artikelnr: number;
   preis: number;
   quantity: number;
+
 }
