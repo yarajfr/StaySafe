@@ -7,4 +7,5 @@ export class Product{
   artikelnr: number;
   preis: number;
   quantity: number;
+
 }

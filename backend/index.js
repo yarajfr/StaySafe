@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const staysafeRouter = require('./staysafe/staysafeRouter');
 const router = require("./staysafe/staysafeRouter");
+const {readCart} = require("./staysafe/controller");
 const { readProducts, readProduct} = require('./staysafe/controller');
 
 
@@ -27,6 +28,8 @@ app.get('/product', staysafeRouter);
 router.get('/product', readProducts);
 
 router.get('/product/:id', readProduct);
+
+router.get('/cart', readCart);
 
 app.get('/staysafe', staysafeRouter);
 

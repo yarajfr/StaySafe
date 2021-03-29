@@ -1,9 +1,11 @@
-<ul class="list-group">
-  <li style="background: #c8e3e0; " class="list-group-item" *ngFor="let i of [1,2,3,4,5]">
-  <app-cart-item></app-cart-item>
+<div *ngIf="cartItems.length === 0" class="alert alert-info">Dein Warenkorb ist leer.</div>
+
+<ul *ngIf="cartItems.length > 0" class="list-group">
+  <li style="background: #c8e3e0; " class="list-group-item" *ngFor="let item of cartItems">
+  <app-cart-item>[cartItem]="item"</app-cart-item>
   </li>
 
-  <li style="background: #72beb6;" class="list-group-item">
-    <strong>Summe</strong> {{ 1100 | currency:'INR' }}
+  <li style="background: #72beb6;" class="list-group-item active">
+    <strong>Summe</strong> {{ cartTotal | currency:'EUR' }}
   </li>
 </ul>

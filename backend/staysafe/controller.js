@@ -10,14 +10,21 @@ function readProducts(request, response) {
 
 function readProduct(request, response) {
     model.getProduct(request.params.id).then(
-        author => response.json(author),
+        product => response.json(product),
         error => response.status(500).json(error),
     );
 }
 
+function readCart(request, response) {
+    model.getCart(request.params.id).then(
+        cart => response.json(cart),
+        error => response.status(500).json(error),
+    );
+}
 
 module.exports = {
     readProducts,
     readProduct,
+    readCart
 
 };

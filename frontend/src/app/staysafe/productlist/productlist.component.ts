@@ -3,6 +3,7 @@ import {Product} from "../../shared/product";
 import {Data} from "../../shared/data";
 import {ActivatedRoute} from '@angular/router';
 import {BackendService} from "../../shared/backend.service";
+import {MessengerService} from "../../service/messenger.service";
 
 
 @Component({
@@ -16,7 +17,11 @@ export class ProductlistComponent implements OnInit {
   selectedId: number;
 
 
-  constructor(private cs: BackendService, private route: ActivatedRoute) {
+  constructor(private cs: BackendService, private route: ActivatedRoute, private msg: MessengerService) {
+  }
+
+  handleAddToCart() {
+    this.msg.sendMessage(this.product)
   }
 
   ngOnInit(): void {
@@ -32,33 +37,14 @@ export class ProductlistComponent implements OnInit {
     return data.id;
   }
 
+
   readProduct(): void {
     this.cs.getAll().subscribe(
       (response: Data[]) => this.product = response,
       error => console.log(error)
     );
   }
-/*
-  ngOnInit() {
-    this.cs.getProduct().subscribe((products) => {
-      this.product = products;
-    })
-  }
 
-  trackByData(index: number, data: Data): number {
-    return data.id;
-  }
-
-  readProduct(): void {
-    this.cs.getProduct().subscribe(
-      (response: Data[]) => this.product = response,
-      error => console.log(error)
-    );
-  }*/
-
-  handleAddToCart() {
-
-  }
 }
 
 
