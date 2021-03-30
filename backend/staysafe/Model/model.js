@@ -30,8 +30,18 @@ function getCart() {
 
 }
 
+function getOne(id) {
+    return new Promise((resolve, reject) => {
+        const query = 'SELECT * FROM product WHERE id=?';
+        connection.query(query, [id], (error, results) => {
+            if (error) reject(error);
+            else resolve(results[0]);
+        });
+    });
+}
+
 
 
   module.exports = {
-    getProduct, getCart
+    getProduct, getCart,  get(id) { return getOne(id)},
  };

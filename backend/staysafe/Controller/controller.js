@@ -1,5 +1,21 @@
 const model = require('../Model/model');
 
+function listAction(request, response) {
+    model.getAll().then(
+        product => {
+            response.json(product);
+        },
+        error => response.status(500).json(error),
+    );
+}
+
+function detailAction(request, response) {
+    model.get(request.params.id).then(
+        product => response.json(product),
+        error => response.status(500).json(error),
+    );
+}
+
 function readProducts(request, response) {
     model.getProduct().then(
         product => response.json(product),
@@ -36,8 +52,10 @@ exports.listAction = async function(request, response) {
 }
 
 module.exports = {
+    listAction,
+    detailAction,
     readProducts,
     readProduct,
-    readCart
+    readCart,
 
 };

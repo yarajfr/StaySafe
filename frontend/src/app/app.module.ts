@@ -24,6 +24,7 @@ import { RegisterComponent } from './staysafe/register/register.component';
 import { ProductComponent } from './staysafe/product/product.component';
 import { ProductReadComponent } from './product/product-read/product-read.component';
 import { CartReadComponent} from "./staysafe/cart-read/cart-read.component";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { CartReadComponent} from "./staysafe/cart-read/cart-read.component";
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
