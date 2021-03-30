@@ -41,14 +41,14 @@
 
 
 
-<div class="card mb-lg-2 shadow-sm">
+<div style="margin-left: 20%; margin-right: 20%"  class="card mb-lg-2 shadow-sm">
   <div class="card-img text-center">
   </div>
 
-  <div class="card-deck" *ngFor="let p of product; let i=index; trackBy: trackByData">
+  <div  class="card-deck" *ngFor="let p of product; let i=index; trackBy: trackByData">
     <div class="card">
   <div class="card-body">
-     <img class="card-img-top" src="assets/Desinfektionsspray.jpg" style="width: 200px; height: 200px" >
+     <img class="card-img-top" src="assets/Desinfektionsspray.jpg" style="width: 200px; height: 200px; margin-left: 90px" >
     <p class="card-text">
       <strong>{{p.artikelbez}}</strong>
     </p>
@@ -57,7 +57,7 @@
 
     <div class="d-flex justify-content-between align-items-center">
       <div class="btn-group">
-        <button type="button" class="btn btn-sm btn-primary product-btn" (click)="handleAddToCart()">Zum Warenkorb hinzufügen</button>
+        <button style="margin-right: 15px" type="button" class="btn btn-sm btn-primary product-btn" (click)="handleAddToCart()">Zum Warenkorb hinzufügen</button>
         <button type="button" class="btn btn-sm btn-outline-secondary product-btn">View Details</button>
       </div>
     </div>
