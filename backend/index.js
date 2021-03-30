@@ -6,6 +6,7 @@ const staysafeRouter = require('./staysafe/Router/staysafeRouter');
 const router = require("./staysafe/Router/staysafeRouter");
 const {readCart} = require("./staysafe/Controller/controller");
 const { readProduct, readProducts } = require("./staysafe/Controller/controller")
+const loginController = require('../backend/Login/loginController');
 
 
 app.use(cors({
@@ -33,7 +34,12 @@ router.get('/cart', readCart);
 
 app.get('./staysafe/Router', staysafeRouter);
 
-require("./staysafe/staysafeRoutes")(app);
+
+app.get('/user', loginController.readAction);
+app.get('/user/:id', loginController.readIdAction);
+app.post('/user/login', loginController.loginAction);
+app.post('/user/register', loginController.registerAction);
+
 
 app.listen(8080, () => {
     console.log('Server listening on port 8080  http://localhost:8080');

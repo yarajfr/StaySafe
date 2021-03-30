@@ -24,7 +24,7 @@ import { RegisterComponent } from './staysafe/register/register.component';
 import { ProductComponent } from './staysafe/product/product.component';
 import { ProductReadComponent } from './product/product-read/product-read.component';
 import { CartReadComponent} from "./staysafe/cart-read/cart-read.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -55,6 +55,7 @@ import {FormsModule} from "@angular/forms";
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
