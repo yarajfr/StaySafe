@@ -22,6 +22,20 @@ function readCart(request, response) {
     );
 }
 
+exports.listAction = async function(request, response) {
+    console.log('listAction');
+    model.getCart().then(
+        cart => {
+            console.log(cart);
+            response.send(cart);
+        },
+        error => {
+            console.log(error);
+            response.send(error);
+        }
+    );
+}
+
 module.exports = {
     readProducts,
     readProduct,

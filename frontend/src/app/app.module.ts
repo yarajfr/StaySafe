@@ -23,8 +23,7 @@ import { LoginComponent } from './staysafe/login/login.component';
 import { RegisterComponent } from './staysafe/register/register.component';
 import { ProductComponent } from './staysafe/product/product.component';
 import { ProductReadComponent } from './product/product-read/product-read.component';
-import { CartReadComponent } from './cart/cart-read/cart-read.component';
-
+import { CartReadComponent} from "./staysafe/cart-read/cart-read.component";
 
 
 @NgModule({

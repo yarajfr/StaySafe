@@ -18,6 +18,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.post("/product", product.create);
+
+app.get("/product", product.findAll);
+
+app.get("/product/:productId", product.findOne);
+
+app.put("/product/:productId", product.update);
+
+app.delete("/product/:productId", product.delete);
+
+app.delete("/product", product.deleteAll);
 
 app.get('/', function(req, res) {
     res.send();
