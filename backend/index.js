@@ -2,10 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require("body-parser");
 const app = express();
-const staysafeRouter = require('./staysafe/staysafeRouter');
-const router = require("./staysafe/staysafeRouter");
-const {readCart} = require("./staysafe/controller");
-const { readProducts, readProduct} = require('./staysafe/controller');
+const staysafeRouter = require('./staysafe/Router/staysafeRouter');
+const router = require("./staysafe/Router/staysafeRouter");
+const {readCart} = require("./staysafe/Controller/controller");
+const { readProduct, readProducts } = require("./staysafe/Controller/controller")
 
 
 app.use(cors({
@@ -18,17 +18,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.post("/product", product.create);
-
-app.get("/product", product.findAll);
-
-app.get("/product/:productId", product.findOne);
-
-app.put("/product/:productId", product.update);
-
-app.delete("/product/:productId", product.delete);
-
-app.delete("/product", product.deleteAll);
 
 app.get('/', function(req, res) {
     res.send();
@@ -42,8 +31,9 @@ router.get('/product/:id', readProduct);
 
 router.get('/cart', readCart);
 
-app.get('/staysafe', staysafeRouter);
+app.get('./staysafe/Router', staysafeRouter);
 
+require("./staysafe/staysafeRoutes")(app);
 
 app.listen(8080, () => {
     console.log('Server listening on port 8080  http://localhost:8080');

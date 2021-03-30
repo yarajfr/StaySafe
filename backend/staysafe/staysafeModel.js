@@ -1,5 +1,3 @@
-const sql = require("./db.js");
-
 // constructor
 const Product = function(product) {
     this.artikelnr = product.artikelnr;

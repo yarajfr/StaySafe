@@ -1,5 +1,4 @@
-const model = require('./model');
-const view = require('./view');
+const model = require('../Model/model');
 
 function readProducts(request, response) {
     model.getProduct().then(
