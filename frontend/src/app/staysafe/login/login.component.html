@@ -39,25 +39,33 @@
     <div class="card-body">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
       <div class = 'form-group'>
-        <input class = 'form-control' type = "text" formControlName="username" name = "username" placeholder = "Benutzername" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <input class = 'form-control' type = "text" formControlName="username" name = "username" placeholder = "Benutzername" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" required autofocus/>
         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-          <div *ngIf="f.username.errors.required">Benutzername bitte eiingeben!</div>
+          <div *ngIf="f.username.errors.required">Benutzername bitte eingeben!</div>
         </div>
       </div>
       <div class = 'form-group'>
-        <input class = 'form-control' type = "password" formControlName="password" name = "password" placeholder = "Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <input class = 'form-control' type = "password" formControlName="password" name = "password" placeholder = "Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required/>
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-          <div *ngIf="f.password.errors.required">Password bitte eingeben!</div>
+          <div *ngIf="f.password.errors.required">Passwort bitte eingeben!</div>
         </div>
+        <p></p>
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Eingaben speichern
+          </label>
       </div>
       <input class= 'btn btn-primary btn-block' type = "submit" value = "Login">
-    </form>
+      </div>
+     </form>
+    </div>
+    <div class = 'col-md-12 offset-1 mt-5' *ngIf = 'this.isLogin'>
+      <h1 style="font-family: sans-serif; text-align: center;">Sie sind bereits eingeloggt!</h1>
+      <button class = 'btn btn-primary btn-block' (click) = 'logout()'>Log-Out</button>
     </div>
   </div>
-  <div class = 'col-md-12 offset-1 mt-5' *ngIf = 'this.isLogin'>
-    <h1 style="font-family: sans-serif; text-align: center;">Sie sind bereits eingeloggt!</h1>
-    <button class = 'btn btn-primary btn-block' (click) = 'logout()'>Log-Out</button>
+  <div class='form-group' style='color: #e52323;' *ngIf="submitted && (f.username.errors || f.password.errors)">
+    <div>Benutzername und Passwort stimmen nicht überein!</div>
   </div>
 </div>
 </div>
-

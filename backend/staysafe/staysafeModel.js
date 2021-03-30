@@ -1,4 +1,30 @@
-// constructor
+const pool = require('../DB/database');
+
+exports.getAll = async function() {
+    return new Promise((resolve, reject) => {
+        const query = 'SELECT * FROM product';
+        console.log('getAll');
+        pool.query(query, (error, results) => {
+            console.log(results);
+            if(error) reject(error);
+            else      resolve(results);
+        })
+    });
+}
+
+exports.getProduct = async function(nr) {
+    return new Promise((resolve, reject) => {
+        const query = 'SELECT * FROM product WHERE artikelnr = ?';
+        console.log('getProdukt');
+        pool.query(query, [nr], (error, results) => {
+            console.log(results);
+            if(error) reject(error);
+            else      resolve(results);
+        })
+    });
+}
+
+
 const Product = function(product) {
     this.artikelnr = product.artikelnr;
     this.artikelbez = product.artikelbez;

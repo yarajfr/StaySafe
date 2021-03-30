@@ -58,4 +58,8 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  logout() {
+    this.auth.clearStorage();
+    this.router.navigate(['']);
+  }
 }

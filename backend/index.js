@@ -1,13 +1,14 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require("body-parser");
-const app = express();
 const staysafeRouter = require('./staysafe/Router/staysafeRouter');
 const router = require("./staysafe/Router/staysafeRouter");
 const {readCart} = require("./staysafe/Controller/controller");
 const { readProduct, readProducts } = require("./staysafe/Controller/controller")
-const loginController = require('../backend/Login/loginController');
+const loginController = require('../backend/Login/loginController.js');
+const staysafeController = require('./staysafe/staysafeController')
 
+const app = express();
 
 app.use(cors({
     origin: '*',
@@ -24,7 +25,8 @@ app.get('/', function(req, res) {
     res.send();
 });
 
-app.get('/product', staysafeRouter);
+app.get('/all', staysafeController.listAction);
+
 
 router.get('/product', readProducts);
 
@@ -45,6 +47,4 @@ app.listen(8080, () => {
     console.log('Server listening on port 8080  http://localhost:8080');
 });
 
-
-module.exports = router;
 
