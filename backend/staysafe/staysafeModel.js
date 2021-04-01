@@ -14,8 +14,8 @@ exports.getAll = async function() {
 
 exports.getProduct = async function(nr) {
     return new Promise((resolve, reject) => {
-        const query = 'SELECT * FROM product WHERE artikelnr = ?';
-        console.log('getProdukt');
+        const query = 'SELECT * FROM product';
+        console.log('getProduct');
         pool.query(query, [nr], (error, results) => {
             console.log(results);
             if(error) reject(error);
@@ -24,6 +24,45 @@ exports.getProduct = async function(nr) {
     });
 }
 
+exports.getCart = async function(nr) {
+    return new Promise((resolve, reject) => {
+        const query = 'SELECT * FROM cart';
+        console.log('getCart');
+        pool.query(query, [nr], (error, results) => {
+            console.log(results);
+            if(error) reject(error);
+            else      resolve(results);
+        })
+    });
+}
+
+
+
+
+/*
+
+/!*
+exports.getCart = async function() {
+    return new Promise((resolve, reject) => {
+        const query = 'SELECT * FROM cart';
+        console.log('getCart');
+        pool.query(query, (error, results) => {
+            console.log(results);
+            if(error) reject(error);
+            else      resolve(results);
+        })
+    });
+}*!/
+exports.readAll = async function() {
+    console.log('readAll');
+    return new Promise((resolve, reject) => {
+        const query = 'SELECT * FROM product';
+        pool.query(query, (error, results) => {
+            if(error) reject(error);
+            else      resolve(results);
+        })
+    });
+}
 
 const Product = function(product) {
     this.artikelnr = product.artikelnr;
@@ -34,7 +73,7 @@ const Product = function(product) {
 };
 
 Product.create = (newProduct, result) => {
-    sql.query("INSERT INTO product SET ?", newProduct, (err, res) => {
+    pool.query("INSERT INTO product SET ?", newProduct, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -47,7 +86,7 @@ Product.create = (newProduct, result) => {
 };
 
 Product.findById = (productId, result) => {
-    sql.query(`SELECT * FROM product WHERE id = ${productId}`, (err, res) => {
+    pool.query(`SELECT * FROM product WHERE id = ${productId}`, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -66,7 +105,7 @@ Product.findById = (productId, result) => {
 };
 
 Product.getAll = result => {
-    sql.query("SELECT * FROM product", (err, res) => {
+    pool.query("SELECT * FROM product", (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
@@ -79,7 +118,7 @@ Product.getAll = result => {
 };
 
 Product.updateById = (id, product, result) => {
-    sql.query(
+    pool.query(
         "UPDATE product SET artikelnr = ?, artikelbez = ?, description = ?, preis = ?, quantity = ?,  WHERE id = ?",
         [product.artikelnr, product.artikelbez, product.description, product.preis,product.quantity, id],
         (err, res) => {
@@ -102,7 +141,7 @@ Product.updateById = (id, product, result) => {
 };
 
 Product.remove = (id, result) => {
-    sql.query("DELETE FROM product WHERE id = ?", id, (err, res) => {
+    pool.query("DELETE FROM product WHERE id = ?", id, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
@@ -121,7 +160,7 @@ Product.remove = (id, result) => {
 };
 
 Product.removeAll = result => {
-    sql.query("DELETE FROM product", (err, res) => {
+    pool.query("DELETE FROM product", (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
@@ -134,3 +173,4 @@ Product.removeAll = result => {
 };
 
 module.exports = Product;
+*/

@@ -39,9 +39,14 @@
   </div>
 -->
 
+<div class="row">
+  <div class="col-md-4" *ngFor="let product of productList">
+    <app-product-item [productItem]="product"></app-product-item>
+  </div>
+</div>
 
 
-<div style="margin-left: 20%; margin-right: 20%"  class="card mb-lg-2 shadow-sm">
+<!--<div style="margin-left: 20%; margin-right: 20%"  class="card mb-lg-2 shadow-sm">
   <div class="card-img text-center">
   </div>
 
@@ -64,7 +69,11 @@
   </div>
 </div>
   </div>
-</div>
+</div>-->
+
+
+
+
 <!--
 <div class="row">
   <div class="col-md-4" *ngFor="let product of productList">

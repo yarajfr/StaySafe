@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateComponent } from './fourcomponents/create/create.component';
-import { UpdateComponent } from './fourcomponents/update/update.component';
-import { ReadComponent } from './fourcomponents/read/read.component';
-import { DeleteComponent } from './fourcomponents/delete/delete.component';
+import { CreateComponent } from './orders/create/create.component';
+import { UpdateComponent } from './orders/update/update.component';
+import { ReadComponent } from './orders/read/read.component';
+import { DeleteComponent } from './orders/delete/delete.component';
 import { LoginComponent } from "./staysafe/login/login.component";
 import { RegisterComponent } from "./staysafe/register/register.component";
 import {StaysafeComponent} from "./staysafe/staysafe.component";

@@ -7,8 +7,5 @@ export interface Data {
   artikelnr: number;
   preis: number;
   quantity: number;
-  produktId: number;
-  produktName: string;
-  menge: number;
 
 }

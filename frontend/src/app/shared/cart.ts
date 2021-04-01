@@ -2,7 +2,7 @@ export class Cart{
 
   id: number;
   productId: number;
-  produktName: string;
+  productName: string;
   menge: number;
   preis: number;
 }

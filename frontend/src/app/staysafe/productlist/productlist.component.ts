@@ -13,38 +13,22 @@ import {MessengerService} from "../../service/messenger.service";
 })
 export class ProductlistComponent implements OnInit {
 
-  product: Product[];
-  selectedId: number;
+  productList: Product[];
 
 
   constructor(private cs: BackendService, private route: ActivatedRoute, private msg: MessengerService) {
   }
 
-  handleAddToCart() {
-    this.msg.sendMessage(this.product)
-  }
-
   ngOnInit(): void {
-    this.selectedId = Number(this.route.snapshot.paramMap.get('id'));
-    if (this.selectedId === 0) {
-      this.readProduct();
-    } else {
-      console.log('id = ' + this.selectedId);
+
+       this.loadProduct();
     }
-  }
-
-  trackByData(index: number, data: Product): number {
-    return data.id;
-  }
 
 
-  readProduct(): void {
-    this.cs.getAll().subscribe(
-      (response: Data[]) => this.product = response,
-      error => console.log(error)
-    );
-  }
-
+    loadProduct() {
+    this.cs.getAll().subscribe((product) => {
+      this.productList = product;
+  })
 }
-
+}
 

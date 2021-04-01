@@ -12,10 +12,27 @@ exports.listAction = async function(request, response) {
             response.send(error);
         }
     );
+}
 
-    exports.listProduct = async function(request, response) {
-        console.log('listProduct');
-        model.getProduct(request.params.nr).then(
+exports.listCart = async function(request, response) {
+    console.log('listCart');
+    model.getCart(request.params.nr).then(
+        data => {
+            console.log(data);
+            response.send(data);
+        },
+        error => {
+            console.log(error);
+            response.send(error);
+        }
+    );
+
+}
+
+
+
+/* exports.listProduct = async function(request, response) {
+        model.getProduct().then(
             data => {
                 console.log(data);
                 response.send(data);
@@ -25,10 +42,37 @@ exports.listAction = async function(request, response) {
                 response.send(error);
             }
         );
+    }*/
+
+    /*exports.readAction = async function(request, response) {
+        console.log('readAction');
+        model.readAll().then(
+            data => {
+                response.send(data);
+            },
+            error => response.send(error),
+
+        );
     }
+*/
 
 
-    exports.create = (req, res) => {
+
+    /* exports.listCart = async function(request, response) {
+         console.log('listCart');
+         model.getCart(request.params.nr).then(
+             data => {
+                 console.log(data);
+                 response.send(data);
+             },
+             error => {
+                 console.log(error);
+                 response.send(error);
+             }
+         );
+     }*/
+
+    /*exports.create = (req, res) => {
         // Validate request
         if (!req.body) {
             res.status(400).send({
@@ -43,7 +87,6 @@ exports.listAction = async function(request, response) {
             preis: req.body.preis,
             quantity: req.body.quantity,
         });
-
 
         Product.create(product, (err, data) => {
             if (err)
@@ -140,3 +183,4 @@ exports.listAction = async function(request, response) {
         });
     };
 }
+*/

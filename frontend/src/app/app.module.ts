@@ -12,19 +12,17 @@ import { FiltersComponent } from './staysafe/filters/filters.component';
 import { ProductlistComponent } from './staysafe/productlist/productlist.component';
 import { CartComponent } from './staysafe/cart/cart.component';
 import { CartItemComponent } from './staysafe/cart/cart-item/cart-item.component';
-import { FourcomponentsComponent } from './fourcomponents/fourcomponents.component';
-import { CreateComponent } from './fourcomponents/create/create.component';
-import { ReadComponent } from './fourcomponents/read/read.component';
-import { UpdateComponent } from './fourcomponents/update/update.component';
-import { DeleteComponent } from './fourcomponents/delete/delete.component';
+import { OrdersComponent } from './orders/orders.component';
+import { CreateComponent } from './orders/create/create.component';
+import { ReadComponent } from './orders/read/read.component';
+import { UpdateComponent } from './orders/update/update.component';
+import { DeleteComponent } from './orders/delete/delete.component';
 import {AppRoutingModule} from "./app-routing.module";
 import { CheckoutComponent } from './staysafe/checkout/checkout.component';
 import { LoginComponent } from './staysafe/login/login.component';
 import { RegisterComponent } from './staysafe/register/register.component';
-import { ProductComponent } from './staysafe/product/product.component';
-import { ProductReadComponent } from './product/product-read/product-read.component';
-import { CartReadComponent} from "./staysafe/cart-read/cart-read.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ProductItemComponent } from "./staysafe/productlist/product-item/product-item.component";
 
 
 @NgModule({
@@ -38,7 +36,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     ProductlistComponent,
     CartComponent,
     CartItemComponent,
-    FourcomponentsComponent,
+    OrdersComponent,
     CreateComponent,
     ReadComponent,
     UpdateComponent,
@@ -46,9 +44,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     CheckoutComponent,
     LoginComponent,
     RegisterComponent,
-    ProductComponent,
-    ProductReadComponent,
-    CartReadComponent,
+    ProductItemComponent,
   ],
   imports: [
     BrowserModule,
