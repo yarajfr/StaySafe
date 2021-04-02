@@ -23,6 +23,17 @@ import { LoginComponent } from './staysafe/login/login.component';
 import { RegisterComponent } from './staysafe/register/register.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ProductItemComponent } from "./staysafe/productlist/product-item/product-item.component";
+import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
+import {pencilSquare } from 'ngx-bootstrap-icons';
+import { FormComponent } from './orders/read/form/form.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatListModule} from "@angular/material/list";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatIconModule} from "@angular/material/icon";
+
+const icons = {
+  pencilSquare,
+};
 
 
 @NgModule({
@@ -45,6 +56,8 @@ import { ProductItemComponent } from "./staysafe/productlist/product-item/produc
     LoginComponent,
     RegisterComponent,
     ProductItemComponent,
+    FormComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -52,6 +65,11 @@ import { ProductItemComponent } from "./staysafe/productlist/product-item/produc
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxBootstrapIconsModule.pick(icons),
+    MatToolbarModule,
+    MatListModule,
+    MatSidenavModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

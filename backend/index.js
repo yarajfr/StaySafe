@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require("body-parser");
 const loginController = require('../backend/Login/loginController.js');
 const staysafeController = require('./staysafe/staysafeController');
+const ordersController = require('../backend/staysafe/Orders/orders.controller')
 
 const app = express();
 
@@ -29,8 +30,21 @@ app.get('/user/:id', loginController.readIdAction);
 app.post('/user/login', loginController.loginAction);
 app.post('/user/register', loginController.registerAction);
 
+app.get("/orders", ordersController.findAll);
+
+app.post("/orders", ordersController.create);
+
+app.get("/orders/:id", ordersController.findOne);
+
+app.put("/orders/:id", ordersController.update);
+
+app.delete("/orders/:id", ordersController.delete);
+
+app.delete("/orders", ordersController.deleteAll);
+
 app.listen(8080, () => {
     console.log('Server listening on port 8080  http://localhost:8080');
 });
+
 
 

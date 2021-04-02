@@ -7,6 +7,7 @@ import { DeleteComponent } from './orders/delete/delete.component';
 import { LoginComponent } from "./staysafe/login/login.component";
 import { RegisterComponent } from "./staysafe/register/register.component";
 import {StaysafeComponent} from "./staysafe/staysafe.component";
+import {OrdersComponent} from "./orders/orders.component";
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'delete/:id', component: DeleteComponent },
   { path: 'staysafe', component: StaysafeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'orders', component: OrdersComponent }
 ];
 
 @NgModule({

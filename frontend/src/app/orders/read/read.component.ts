@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {BackendService} from '../../shared/backend.service';
-import {Data} from '../../shared/data';
+import { BackendService } from '../../shared/backend.service';
+import {Orders} from "../../shared/orders";
 import {ActivatedRoute} from '@angular/router';
-import {Product} from "../../shared/product";
+import {HttpErrorResponse} from "@angular/common/http";
+
 
 @Component({
   selector: 'app-read',
@@ -11,53 +12,41 @@ import {Product} from "../../shared/product";
 })
 export class ReadComponent implements OnInit {
 
-  product: Data[];
+  orders: Orders[];
+  order: Orders;
   selectedId: number;
+  error: HttpErrorResponse;
+
 
   constructor(private cs: BackendService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.selectedId = Number(this.route.snapshot.paramMap.get('id'));
     if (this.selectedId === 0) {
-      this.readAll();
-    } else {
+    this.readAll();
+    }
+    else {
       console.log('id = ' + this.selectedId);
+      this.readOne(this.selectedId);
     }
   }
 
-  trackByData(index: number, data: Product): number {
-    return data.id;
-  }
+  trackByData(index: number, orders: Orders): number { return orders.id; }
+
 
   readAll(): void {
-    this.cs.getAll().subscribe(
-      (response: Data[]) => this.product = response,
+    this.cs.getAllOrders().subscribe(
+      (response: Orders[]) => {
+        console.log(response);
+        return this.orders = response;  },
+      error => console.log(error)
+    );
+  }
+
+  private readOne(id: number): void {
+    this.cs.getOrdersById(id).subscribe(
+      (response: Orders) => this.order = response,
       error => console.log(error)
     );
   }
 }
-
-  /*product: Data[];
-  selectedId: number;
-
-  constructor(private cs: BackendService, private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    this.selectedId = Number(this.route.snapshot.paramMap.get('id'));
-    if (this.selectedId === 0) {
-      this.readAll();
-    }
-    else {
-      console.log('id = ' + this.selectedId);
-    }
-  }
-
-  trackByData(index: number, data: Data): number { return data.id; }
-
-  readAll(): void {
-    this.cs.getProduct().subscribe(
-      (response: Data[]) => this.product = response,
-      error => console.log(error)
-    );
-  }
-}*/

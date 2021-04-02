@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import {UserLogin} from "./userlogin";
 import {UserRegister} from "./userregister";
 import { Cart } from "./cart";
-import { map } from 'rxjs/operators';
 import { Product } from './product';
+import { Orders } from "./orders";
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +27,14 @@ export class BackendService {
   login(user: UserLogin): Observable<UserRegister> {
     return this.http.post<any>(this.baseUrl + '/user/login', user);
   }
+
+  getAllOrders(): Observable<Orders[]>{
+    return this.http.get<Orders[]>(this.baseUrl + '/orders');
+  }
+
+  getOrdersById(ordersId: number): Observable<Orders> {
+    return this.http.get<Orders>(this.baseUrl + '/' + ordersId);
+  }
+
 
 }
