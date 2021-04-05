@@ -1,4 +1,4 @@
-const pool = require('../../DB/database');
+const pool = require("../../DB/database");
 
 const Order = function(order) {
     this.firstname = order.firstname;
@@ -21,7 +21,7 @@ exports.create = (newOrder, result) => {
 };
 
 exports.findById = (id, result) => {
-    pool.query(`SELECT * FROM orders WHERE id = ${orderId}`, (err, res) => {
+    pool.query(`SELECT * FROM orders WHERE id = ${id}`, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -105,3 +105,4 @@ exports.removeAll = result => {
     });
 };
 
+module.exports = Order;

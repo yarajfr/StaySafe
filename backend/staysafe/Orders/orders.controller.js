@@ -16,7 +16,7 @@ const order = new Order({
     });
 
 
-    Order.create(order, (err, data) => {
+Order.create(order, (err, data) => {
         if (err)
             res.status(500).send({
                 message:
@@ -38,15 +38,15 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-    Order.findById(req.params.orderId, (err, data) => {
+    Order.findById(req.params.id, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
                 res.status(404).send({
-                    message: `Not found Order with id ${req.params.orderId}.`
+                    message: `Not found Order with id ${req.params.id}.`
                 });
             } else {
                 res.status(500).send({
-                    message: "Error retrieving Order with id " + req.params.orderId
+                    message: "Error retrieving Order with id " + req.params.id
                 });
             }
         } else res.send(data);
@@ -62,17 +62,17 @@ exports.update = (req, res) => {
     }
 
     Order.updateById(
-        req.params.orderId,
+        req.params.id,
         new Order(req.body),
         (err, data) => {
             if (err) {
                 if (err.kind === "not_found") {
                     res.status(404).send({
-                        message: `Not found Order with id ${req.params.orderId}.`
+                        message: `Not found Order with id ${req.params.id}.`
                     });
                 } else {
                     res.status(500).send({
-                        message: "Error updating Order with id " + req.params.orderId
+                        message: "Error updating Order with id " + req.params.id
                     });
                 }
             } else res.send(data);
@@ -81,15 +81,15 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-    Order.remove(req.params.orderId, (err, data) => {
+    Order.remove(req.params.id, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
                 res.status(404).send({
-                    message: `Not found Order with id ${req.params.orderId}.`
+                    message: `Not found Order with id ${req.params.id}.`
                 });
             } else {
                 res.status(500).send({
-                    message: "Could not delete Order with id " + req.params.orderId
+                    message: "Could not delete Order with id " + req.params.id
                 });
             }
         } else res.send({ message: `Order was deleted successfully!` });

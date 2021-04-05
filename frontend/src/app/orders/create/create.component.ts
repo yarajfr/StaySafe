@@ -15,18 +15,18 @@ export class CreateComponent implements OnInit {
   orders: Orders;
 
   constructor(
-    private cs: BackendService,
-    private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {
-    this.form = this.fb.group(
-      {
-        firstNameControl: ['', Validators.required],
-        lastNameControl: ['', Validators.required],
-        emailControl: ['', Validators.required],
-        orderNrControl: ['', Validators.required]
-      }
+  private cs: BackendService,
+      private fb: FormBuilder,
+      private route: ActivatedRoute,
+      private router: Router
+  ) }
+  this.form = this.fb.group(
+        {
+          firstNameControl: ['', Validators.required],
+          lastNameControl: ['', Validators.required],
+          emailControl: ['', Validators.required],
+          orderNrControl: ['', Validators.required]
+        }
     );
     this.orders = { id: 0, firstname: '', lastname: '', email: '', orderNr: 0,};
   }
@@ -50,3 +50,4 @@ export class CreateComponent implements OnInit {
     this.router.navigate(['/read']);
   }
 }
+
