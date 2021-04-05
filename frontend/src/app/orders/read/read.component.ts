@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../shared/backend.service';
+import { Data } from '../../shared/data';
 import {Orders} from "../../shared/orders";
 import {ActivatedRoute} from '@angular/router';
-import {HttpErrorResponse} from "@angular/common/http";
 
 
 @Component({
@@ -15,7 +15,6 @@ export class ReadComponent implements OnInit {
   orders: Orders[];
   order: Orders;
   selectedId: number;
-  error: HttpErrorResponse;
 
 
   constructor(private cs: BackendService, private route: ActivatedRoute) { }
@@ -44,7 +43,7 @@ export class ReadComponent implements OnInit {
   }
 
   private readOne(id: number): void {
-    this.cs.getOrdersById(id).subscribe(
+    this.cs.getFindById(id).subscribe(
       (response: Orders) => this.order = response,
       error => console.log(error)
     );
