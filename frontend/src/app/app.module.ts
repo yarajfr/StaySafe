@@ -32,6 +32,7 @@ import {MatIconModule} from "@angular/material/icon";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
+
 const icons = {
   pencilSquare,
   trash
