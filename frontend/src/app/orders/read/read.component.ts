@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../shared/backend.service';
 import {Orders} from "../../shared/orders";
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {HttpErrorResponse} from "@angular/common/http";
+import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
+import {Observable} from "rxjs";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -15,10 +18,30 @@ export class ReadComponent implements OnInit {
   orders: Orders[];
   order: Orders;
   selectedId: number;
+  path: Observable<string>;
   error: HttpErrorResponse;
+  closeResult = '';
+  form: FormGroup;
 
 
-  constructor(private cs: BackendService, private route: ActivatedRoute) { }
+  constructor(private cs: BackendService, private route: ActivatedRoute,
+              private router: Router, config: NgbModalConfig,
+              private modalService: NgbModal,
+              private fb: FormBuilder) {
+
+    config.backdrop = 'static';
+    config.keyboard = false;
+
+    this.form = this.fb.group(
+      {
+        idControl: ['', Validators.required],
+        firstNameControl: ['', Validators.required],
+        lastNameControl: ['', Validators.required],
+        emailControl: ['', Validators.required],
+        orderNrControl: ['', Validators.required]
+      }
+    );
+  }
 
   ngOnInit(): void {
     this.selectedId = Number(this.route.snapshot.paramMap.get('id'));
@@ -43,10 +66,33 @@ export class ReadComponent implements OnInit {
     );
   }
 
-  private readOne(id: number): void {
-    this.cs.getOrdersById(id).subscribe(
+  readOne(id: number): void {
+    this.cs.findById(id).subscribe(
       (response: Orders) => this.order = response,
       error => console.log(error)
     );
+  }
+
+  update(orders: Orders): void {
+    this.order = orders;
+    this.cs.updateById(this.order.id, this.order);
+    this.router.navigateByUrl('/read');
+  }
+
+  deleteOne(id: number): void {
+    this.cs.deleteOne(id);
+    window.location.reload();
+  }
+
+  open(content, id: number): void {
+    this.readOne(id);
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+      console.log(this.closeResult);
+      if (result === 'delete')
+      {
+        this.deleteOne(this.order?.id);
+      }
+    });
   }
 }

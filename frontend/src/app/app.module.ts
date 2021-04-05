@@ -31,8 +31,10 @@ import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatIconModule} from "@angular/material/icon";
 
+
 const icons = {
   pencilSquare,
+  trash
 };
 
 
@@ -69,7 +71,8 @@ const icons = {
     MatToolbarModule,
     MatListModule,
     MatSidenavModule,
-    MatIconModule
+    MatIconModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
