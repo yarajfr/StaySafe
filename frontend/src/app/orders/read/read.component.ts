@@ -62,10 +62,34 @@ export class ReadComponent implements OnInit {
     );
   }
 
-  private readOne(id: number): void {
+  readOne(id: number): void {
     this.cs.getFindById(id).subscribe(
       (response: Orders) => this.order = response,
       error => console.log(error)
+
     );
+  }
+  update(orders: Orders): void {
+      this.order = orders;
+      this.cs.updateById(this.order.id, this.order);
+      this.router.navigateByUrl('/read');
+    }
+
+    deleteOne(id: number): void {
+      this.cs.deleteOne(id);
+      window.location.reload();
+    }
+
+    open(content, id: number): void {
+      this.readOne(id);
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+        console.log(this.closeResult);
+        if (result === 'delete')
+        {
+          this.deleteOne(this.order?.id);
+        }
+      });
+    }
   }
 }
