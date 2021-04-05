@@ -1,7 +1,8 @@
 <div *ngIf="selectedId == 0" class="container">
-  <h2>Bestell-Liste</h2>
-<table class="table table-striped table-hover">
-  <caption>Bestell-Liste</caption>
+  <h1 style="font-family: sans-serif">Bestell-Liste</h1>
+  <p></p>
+<table style="background:honeydew; border-radius: 15px;
+  padding: 3%;" class="table table-striped table-hover">
   <thead>
   <tr>
     <th>Nr.</th>
@@ -9,7 +10,9 @@
     <th>Nachname</th>
     <th>E-Mail</th>
     <th>Bestellungs-Nummer</th>
-    <th>Edit</th>
+    <th>Bearbeiten</th>
+    <th>Löschen</th>
+    <th><a [routerLink]="['/create']" > Erstellen</a></th>
   </tr>
   </thead>
   <tbody>
@@ -26,15 +29,74 @@
         width="1em"
         height="1em">
       </i-bs></a></td>
+    <td><i-bs
+      name="trash"
+      class="text-secondary"
+      width="1em"
+      height="1em"
+      (click)="open(content, order.id)">
+    </i-bs></td>
   </tr>
   </tbody>
 </table>
 </div>
 <div *ngIf="selectedId > 0" class="container">
   <h1>{{ selectedId }}</h1>
-  <p>{{ error?.message }}</p>
-  <p>{{ error?.status }}</p>
+  <p>{{ order.id }}</p>
+  <p>{{ order.firstname }}</p>
+  <p>{{ order.lastname }}</p>
+  <p>{{ order.email }}</p>
   <app-form [orders]="order"></app-form>
   <p><a [routerLink]="['/read']">Zurück zur Tabelle</a></p>
 </div>
+<div *ngIf="order">
+  <app-form [orders]="order" (updateEvent)="update($event)"></app-form>
+</div>
 
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Bestätigung zum Löschen</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('cancel')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h3 style="color: red">Wollen Sie wirklich diesen Kunden aus der Liste entfernen?</h3>
+    <form [formGroup]="form">
+      <div class="form-group">
+        <label for="inpId">id</label>
+        <div class="input-group">
+          <input id="inpId" class="form-control" formControlName="idControl" value="{{ order?.id }}" readonly>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inpFN">Vorname</label>
+        <div class="input-group">
+          <input id="inpFN" class="form-control" formControlName="firstNameControl" value="{{ order?.firstname }}" readonly>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inpLN">Nachname</label>
+        <div class="input-group">
+          <input id="inpLN" class="form-control" formControlName="lastNameControl" value="{{ order?.lastname }}" readonly>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inpEmail">E-Mail</label>
+        <div class="input-group">
+          <input id="inpEmail" class="form-control" formControlName="emailControl" value="{{ order?.email }}" readonly>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inpON">Bestellungs-Nummer</label>
+        <div class="input-group">
+          <input id="inpON" class="form-control" formControlName="orderNrControl" value="{{ order?.email }}" readonly>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close('cancel')">Abbrechen</button>
+    <button type="button" class="btn btn-primary" (click)="modal.close('delete')">Löschen</button>
+  </div>
+</ng-template>

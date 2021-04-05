@@ -14,9 +14,10 @@ export class BackendService {
 
   baseUrl = 'http://localhost:8080';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  getAll(): Observable<Product[]>{
+  getAll(): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrl + '/product');
   }
 
@@ -28,13 +29,49 @@ export class BackendService {
     return this.http.post<any>(this.baseUrl + '/user/login', user);
   }
 
-  getAllOrders(): Observable<Orders[]>{
+  getAllOrders(): Observable<Orders[]> {
     return this.http.get<Orders[]>(this.baseUrl + '/orders');
   }
 
-  getOrdersById(ordersId: number): Observable<Orders> {
+  findById(ordersId: number): Observable<Orders> {
     return this.http.get<Orders>(this.baseUrl + '/' + ordersId);
   }
 
+  updateById(ordersId: number, orders: Orders): void {
+    this.http.put<Orders>(this.baseUrl + '/' + ordersId, orders)
+      .subscribe(
+        response => {
+          console.log(response);
+          console.log(response.id);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
 
+  deleteOne(orderId: number): void {
+    this.http.delete<Orders>(this.baseUrl + '/' + orderId)
+      .subscribe(
+        response => {
+          console.log(response);
+          console.log(response.id);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+
+  create(orders: Orders): void {
+    this.http.post<Orders>(this.baseUrl, orders)
+      .subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
 }

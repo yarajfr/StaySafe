@@ -30,15 +30,15 @@ app.get('/user/:id', loginController.readIdAction);
 app.post('/user/login', loginController.loginAction);
 app.post('/user/register', loginController.registerAction);
 
-app.get("/orders", ordersController.findAll);
-
 app.post("/orders", ordersController.create);
 
-app.get("/orders/:id", ordersController.findOne);
+app.get("/orders", ordersController.findAll);
 
-app.put("/orders/:id", ordersController.update);
+app.get("/orders/:orderId", ordersController.findOne);
 
-app.delete("/orders/:id", ordersController.delete);
+app.put("/orders/:orderId", ordersController.update);
+
+app.delete("/orders/orderId", ordersController.delete);
 
 app.delete("/orders", ordersController.deleteAll);
 
