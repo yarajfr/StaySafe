@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../shared/backend.service';
-import { Data } from '../../shared/data';
 import {Orders} from "../../shared/orders";
 import {ActivatedRoute} from '@angular/router';
+import {HttpErrorResponse} from "@angular/common/http";
+import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
+import {Observable} from "rxjs";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
