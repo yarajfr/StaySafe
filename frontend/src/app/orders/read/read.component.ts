@@ -15,9 +15,29 @@ export class ReadComponent implements OnInit {
   orders: Orders[];
   order: Orders;
   selectedId: number;
+  path: Observable<string>;
+  error: HttpErrorResponse;
+  closeResult = '';
+  form: FormGroup;
 
+  constructor(private cs: BackendService, private route: ActivatedRoute,
+              private router: Router, config: NgbModalConfig,
+              private modalService: NgbModal,
+              private fb: FormBuilder) {
 
-  constructor(private cs: BackendService, private route: ActivatedRoute) { }
+       config.backdrop = 'static';
+       config.keyboard = false;
+
+       this.form = this.fb.group(
+             {
+               idControl: ['', Validators.required],
+               firstNameControl: ['', Validators.required],
+               lastNameControl: ['', Validators.required],
+               emailControl: ['', Validators.required],
+               orderNrControl: ['', Validators.required]
+             }
+           );
+         }
 
   ngOnInit(): void {
     this.selectedId = Number(this.route.snapshot.paramMap.get('id'));
