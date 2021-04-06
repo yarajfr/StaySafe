@@ -47,6 +47,7 @@
   <p>{{ order.lastname }}</p>
   <p>{{ order.email }}</p>
   <p>{{ order.orderNr }}</p>
+  <app-form [orders]="order"></app-form>
   <p><a [routerLink]="['/read']">Zurück zur Tabelle</a></p>
 </div>
 <div *ngIf="order">

@@ -1,4 +1,4 @@
-const pool = require("../../DB/database");
+const sql = require("../../DB/database");
 
 const Order = function(order) {
     this.firstname = order.firstname;
@@ -7,8 +7,8 @@ const Order = function(order) {
     this.orderNr = order.orderNr;
 };
 
-exports.create = (newOrder, result) => {
-    pool.query("INSERT INTO orders SET ?", newOrder, (err, res) => {
+Order.create = (newOrder, result) => {
+    sql.query("INSERT INTO orders SET ?", newOrder, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -20,8 +20,8 @@ exports.create = (newOrder, result) => {
     });
 };
 
-exports.findById = (id, result) => {
-    pool.query(`SELECT * FROM orders WHERE id = ${id}`, (err, res) => {
+Order.findById = (id, result) => {
+    sql.query(`SELECT * FROM orders WHERE id = ${id}`, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -38,8 +38,8 @@ exports.findById = (id, result) => {
     });
 };
 
-exports.getAllOrders = result => {
-    pool.query("SELECT * FROM orders", (err, res) => {
+Order.getAllOrders = result => {
+    sql.query("SELECT * FROM orders", (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
@@ -51,8 +51,8 @@ exports.getAllOrders = result => {
     });
 };
 
-exports.updateById = (id, order, result) => {
-    pool.query("UPDATE orders SET firstname = ?, lastname = ?, email = ?, orderNr = ?, WHERE id = ?",
+Order.updateById = (id, order, result) => {
+    sql.query("UPDATE orders SET firstname = ?, lastname = ?, email = ?, orderNr = ? WHERE id = ?",
         [order.firstname, order.lastname, order.email, order.orderNr, id],
         (err, res) => {
             if (err) {
@@ -73,8 +73,8 @@ exports.updateById = (id, order, result) => {
     );
 };
 
-exports.remove = (id, result) => {
-    pool.query("DELETE FROM orders WHERE id = ?", id, (err, res) => {
+Order.remove = (id, result) => {
+    sql.query("DELETE FROM orders WHERE id = ?", id, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
@@ -92,8 +92,8 @@ exports.remove = (id, result) => {
     });
 };
 
-exports.removeAll = result => {
-    pool.query("DELETE FROM orders", (err, res) => {
+Order.removeAll = result => {
+    sql.query("DELETE FROM orders", (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);

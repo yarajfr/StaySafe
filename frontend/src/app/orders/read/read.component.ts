@@ -66,8 +66,8 @@ export class ReadComponent implements OnInit {
     );
   }
 
-  readOne(id: number): void {
-    this.cs.findById(id).subscribe(
+  readOne(ordersId: number): void {
+    this.cs.getOrdersById(ordersId).subscribe(
       (response: Orders) => this.order = response,
       error => console.log(error)
     );
