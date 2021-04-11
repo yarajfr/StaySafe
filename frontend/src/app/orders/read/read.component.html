@@ -1,3 +1,16 @@
+<div *ngIf="!isLogin" class = 'col-md-4 offset-4 mt-5'>
+  <div class="container">
+    <div class="container-3">
+      <h2 style="font-style: italic; text-align: center">Du bist nicht angemeldet!</h2>
+      <p></p>
+      <h3 style="text-align: center">Melde dich zuerst an, um die Bestellungen einsehen zu können.</h3>
+      <p></p>
+      <a><button class="btn btn-primary btn-block" [routerLink]="['../login']" >Anmelden</button></a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLogin">
 <div *ngIf="selectedId == 0" class="container">
   <h1 style="font-family: sans-serif">Bestell-Liste</h1>
   <p></p>
@@ -17,13 +30,12 @@
     </thead>
     <tbody>
     <tr *ngFor="let order of orders; let i=index; trackBy: trackByData">
-<!--      <td>{{ i+1 }}</td>-->
       <td>{{order.id}}</td>
       <td>{{order.firstname}}</td>
       <td>{{order.lastname}}</td>
       <td>{{order.email}}</td>
       <td>{{order.orderNr}}</td>
-      <td><a [routerLink]="['/read', order.id]">
+      <td><a [routerLink]="['/read/bearbeiten', order.id]">
         <i-bs
           name="pencil-square"
           class="text-secondary"
@@ -46,7 +58,7 @@
     <h1>{{ selectedId }}</h1>
     <p>{{ error?.message }}</p>
     <p>{{ error?.status }}</p>
-    <p><a [routerLink]="['/bearbeiten']">Zurück zur Tabelle</a></p>
+    <p><a [routerLink]="['/read']">Zurück zur Tabelle</a></p>
   </div>
   <div *ngIf="order">
     <app-update [data]="order" (updateEvent)="update($event)"></app-update>
@@ -61,7 +73,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <h3 style="color: red">Wollen Sie wirklich diesen Kunden aus der Liste entfernen?</h3>
+    <h3 style="color: red">Wollen Sie wirklich diese Bestellung aus der Liste entfernen?</h3>
     <form [formGroup]="form">
       <div class="form-group">
         <label for="inpId">id</label>
@@ -100,4 +112,4 @@
     <button type="button" class="btn btn-primary" (click)="modal.close('delete')">Löschen</button>
   </div>
 </ng-template>
-
+</div>

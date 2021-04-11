@@ -7,10 +7,11 @@ import {BehaviorSubject,  Observable, Subject} from "rxjs";
 export class AuthService {
 
   private loggedIn = localStorage.getItem('userData') ? true : false;
+  public loginStatus: Subject<boolean> = new BehaviorSubject<boolean>(this.loggedIn);
+
 
   constructor() { }
 
-  public loginStatus: Subject<boolean> = new BehaviorSubject<boolean>(this.loggedIn);
 
   updateStatus(status: boolean): void {
     console.log('updateData');
@@ -32,9 +33,6 @@ export class AuthService {
     console.log(data);
   }
 
-  getToken(): any {
-    return localStorage.getItem('token');
-  }
 
   getUsername(): any {
     return localStorage.getItem('username');

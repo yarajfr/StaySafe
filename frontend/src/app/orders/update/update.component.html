@@ -1,3 +1,15 @@
+<div *ngIf="!isLogin" class = 'col-md-4 offset-4 mt-5'>
+  <div class="container">
+    <div class="container-7">
+      <h1>Du bist nicht angemeldet!</h1>
+      <h3>Melde dich zuerst an, um eine Bestellung bearbeiten zu können.</h3>
+      <a><button class="btn btn-info btn-block" [routerLink]="['../anmeldung']">Anmelden</button></a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLogin">
+
 <form style="background-color: honeydew;
       color: #ffffff;
       border-radius: 15px;

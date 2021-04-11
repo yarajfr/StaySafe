@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {BackendService} from '../../shared/backend.service';
 import {HttpErrorResponse} from "@angular/common/http";
 import {Orders} from "../../service/data.service";
+import {AuthService} from "../../service/auth.service";
 
 @Component({
   selector: 'app-create',
@@ -15,13 +16,18 @@ export class CreateComponent implements OnInit {
   form: FormGroup;
   data: Orders;
   error: HttpErrorResponse;
+  isLogin = false;
+  submitted = false;
 
   constructor(
   private cs: BackendService,
       private fb: FormBuilder,
       private route: ActivatedRoute,
-      private router: Router
+      private router: Router,
+      private auth: AuthService
   ) {
+    this.isLogin = this.auth.isLoggedIn();
+
   this.form = this.fb.group(
         {
           firstNameControl: ['', Validators.required],
@@ -34,6 +40,7 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isUserLogin();
   }
 
   onSubmit(): void {
@@ -51,6 +58,13 @@ export class CreateComponent implements OnInit {
 
   cancel(): void {
     this.router.navigate(['/read']);
+  }
+
+
+  isUserLogin(): void{
+    if (this.auth.getUserDetails() != null){
+      this.isLogin = true;
+    }
   }
 }
 

@@ -6,6 +6,7 @@ import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import {Observable} from "rxjs";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Orders} from "../../service/data.service";
+import {AuthService} from "../../service/auth.service";
 
 
 @Component({
@@ -22,12 +23,14 @@ export class ReadComponent implements OnInit {
   error: HttpErrorResponse;
   closeResult = '';
   form: FormGroup;
+  isLogin = false;
 
 
   constructor(private cs: BackendService, private route: ActivatedRoute,
               private router: Router, config: NgbModalConfig,
               private modalService: NgbModal,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private auth: AuthService) {
 
     config.backdrop = 'static';
     config.keyboard = false;
@@ -44,6 +47,7 @@ export class ReadComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isUserLogin();
     this.selectedId = Number(this.route.snapshot.paramMap.get('id'));
     if (this.selectedId === 0) {
     this.readAll();
@@ -95,4 +99,11 @@ export class ReadComponent implements OnInit {
       }
     });
   }
+
+  isUserLogin(): void {
+    if (this.auth.getUserDetails() != null) {
+      this.isLogin = true;
+    }
+  }
+
 }

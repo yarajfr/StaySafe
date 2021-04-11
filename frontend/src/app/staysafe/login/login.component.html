@@ -1,35 +1,3 @@
-<!--<div class="row">
-  <div class="col-md-4 offset-md-4">
-    <div class="guest-form-card card">
-
-      <div class="card-header text-center">
-        <h2>Login</h2>
-      </div>
-    <div class="card-body">
-      <form #loginForm="ngForm" (ngSubmit)="login()">
-        <div class="form-group">
-          <label for="username">Benutzername</label>
-          <input id="username" class="form-control" [ngClass]="{ 'is-invalid': username.touched && username.invalid }" name="username" #username="ngModel" [(ngModel)]="model.username" required>
-          <span class="invalid-feedback">Benutzername muss aufgefüllt werden.</span>
-       </div>
-
-     <div class="form-group">
-       <label for="password">Passwort</label>
-       <input type="password" id="password" class="form-control" name ="password" class="form-control" [ngClass]="{ 'is-invalid': password.touched && password.invalid }" #password="ngModel" [(ngModel)]="model.password" required>
-       <span class="invalid-feedback">Passwort muss ausgefüllt werden</span>
-     </div>
-        <div class="form-group">
-          <input type="checkbox" id="remember" name ="remember" [(ngModel)]="model.remember">
-          <label class="ml-1" for="remember">Eníngaben speichern</label>
-        </div>
-
-        <button class="btn btn-primary btn-block" [disabled]="loginForm.invalid">Login</button>
-  </form>
-  </div>
-</div>
-</div>
-</div>-->
-
 <div class="row">
 <div class="col-md-4 offset-md-4">
   <div class="guest-form-card card" *ngIf = '!this.isLogin'>
@@ -61,7 +29,7 @@
     </div>
     <div class = 'col-md-12 offset-1 mt-5' *ngIf = 'this.isLogin'>
       <h1 style="font-family: sans-serif; text-align: center;">Sie sind bereits eingeloggt!</h1>
-      <button class = 'btn btn-primary btn-block' (click) = 'logout()'>Log-Out</button>
+      <button class = 'btn btn-primary btn-block' (click) = 'logout()'>Abmelden</button>
     </div>
   </div>
   <div class='form-group' style='color: #e52323;' *ngIf="submitted && (f.username.errors || f.password.errors)">

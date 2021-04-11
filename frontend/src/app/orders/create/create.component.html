@@ -1,3 +1,14 @@
+<div *ngIf="!isLogin" class = 'col-md-4 offset-4 mt-5'>
+  <div class="container">
+    <div class="container-3">
+      <h1>Du bist nicht angemeldet!</h1>
+      <h3>Melde dich zuerst an, um eine neue Bestellung zu erstellen</h3>
+      <a><button class="btn btn-info btn-block" [routerLink]="['../anmeldung']">Anmelden</button></a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLogin">
 <div style="background: honeydew; border-radius: 15px;
       padding: 5%;" class="container">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -40,4 +51,5 @@
       </div>
     </div>
   </form>
+</div>
 </div>
