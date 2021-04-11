@@ -27,3 +27,42 @@ Wenn man nun auf Erstellen klickt, gelangt man auf eine extra Seite, wo man bei 
 neuen Kunden in die Bestell-Liste hinzufügen kann. 
 Ziel ist es, dass der Verwalter eine grobe Übersicht über die ganzen Bestellungen hat und somit verwalten kann, welche Bestellungen abgesendet werden 
 müssen und welche schon abgesendet sind. 
+
+
+
+# Aufbau der Webanwendung
+
+Für das Frontend wurde Angular genutzt, für das Backend wurde Node.js genutzt, für die Datenbank wurde MySQL genutzt und für das Design wurde Bootstrap genutzt.
+Wenn der/die NutzerIn eine Aktion in der Anwendung tätigt, stellt das Frontend eine Anfrage an das Backend, welches wiederum auf die Datenbank zugreift. Nach dem Zugriff wird eine Antwort von dem Backend an das Frontend gesendet und das Ergebnis für den/die NutzerIn sichtbar. Dementsprechend sind im Ordner shared und services die Schnittstellen zwischen Backend und Frontend hinterlegt, sowie das Interface und die CRUD-Funktionen der Bestellungen und die Funktion zum Anmelden und Registrieren eines/einer NutzerIn. 
+Die Produkte (Bild, Beschreibung, Preis), die Kundendaten, sowie die Nutzerdaten sind aus der Datenbank. Des weiteren liegen im Frontend-Ordner die Ordner "orders" und "staysafe". In dem Staysafe Ordner befinden sich die Ordner cart, checkout, filters, login, register und productlist. Der Shop ist aufgeteilt in Filter, Productlist und Cart. Links befindet sich ein Filter der die Produkte bei bestimmten Angaben herausfiltert. In der Mitte befindet ist die Productlist, welche die Produkte anzeigt und rechts befindet sich der Warenkorb. Sobald bei einem Produt auf "hinzufügen" geklickt wird, wird der Preis im Warenkorb angezeigt und sobals ein weiterers Produkt hinzugefügt wird, ändert sich die Summe zu einem Endbetrag der aus addierten Preisen entsteht. Die Ordner "footer", "header" und " nav" befinden sich im "shared" Ordner. Sie sind das Grundgerüst der Webanwendung. Die CRUD Funktionen befinden sich im "orders" Ordner.
+Im Backend-Ordner befinden sich die Funktionen für die Zugriffe auf die Datenbank. Dies betrifft sowohl die CRUD-Funktionen der Bestellungen als auch Anmeldung und Registrierung eines/einer NutzerIn. Außerdem befinden sich ebenfalls die Funktionen für die Produkte des Shops, als auch die Funktion des Warenkorbs. Die werden unterteilt im staysafe Ordner und im Login Ordner. Im staysafe Ordner gibt es eine weitere Unterteilung zum orders Ordner. Im DB-Ordner befinden sich die Zugangsdaten der Datenbank. 
+
+
+# Einrichtung zum Los-Starten: 
+
+Damit das Projekt auf Ihrem Rechner läuft, befolge Sie folgende Schritte: 
+
+1. Geben Sie den Befehl git clone https://github.com/yarajfr/StaySafe.git in ihre Konsole ein. 
+
+2. Danach benötigen Sie noch die Datenbank. Die Datenbank heißt: "StaySafe" und beinhaltet die Tabellen cart, orders, product und users.
+cart = Warenkorb, orders = Bestellungen, product = Produkte und users = Nutzerdaten.
+
+Die Tabelle cart enthält die Spalten Id, productId, productName, menge und preis. Die Id ist das Schlüsselattribut. In dieser Tabelle sind die Daten der Produkte im Warenkorb.
+
+Die Tabelle orders enthält die Spalten Id, firstname, lastname, email und orderNr. Die Id ist das Schlüsselattribut. In dieser Tabelle sind die Daten der Kunden die bestellt haben. 
+
+Die Tabelle product enthält die Spalten Id, image, description, artikelbez, artikelnr, preis und quantity. Die Id ist das Schlüsselattribut. In dieser Tabelle sind die Produkte des Online-Shops.
+
+Die Tabelle users enthält die Spalten Id, username, email und password. Die Id ist das Schlüsselattribut. In dieser Tabelle sind die Daten der Kunden die bestellt haben. In dieser Tabelle werden die VerwalterInnen eingetragen.
+
+3. Nachdem Sie die Datenbanken angelegt haben, starten Sie das Projekt, indem Sie in einem Terminalfenster in den Ordner backend gehen und dort node server.js eingeben.
+In einem zweiten Terminalfenster navigieren Sie in den Ordner frontend und geben ng serve ein. 
+
+In Ihrem Browser starten Sie nun localhost:4200 und können die Webanwendung nutzen.
+
+
+
+# Creators: 
+
+Yara Jaafar und Dana Khreis
+
