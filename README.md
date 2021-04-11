@@ -1,7 +1,7 @@
 # StaySafe
  
 Der Online-Shop Stay Safe ist eine Webanwendung, in welcher der Verwalter des Online-Shops die Bestellliste verwalten und bearbeiten kann. 
-Für das Frontend wurde Angular verwendet und für das Backend wurde node.js genutz. Für die Datenbank wurde MySQL verwendet und für das Layout 
+Für das Frontend wurde Angular verwendet und für das Backend wurde node.js genutzt. Für die Datenbank wurde MySQL verwendet und für das Layout 
 wurde Bootstrap genutzt. Beim Öffnen des Online-Shops, gelangt man als aller erstes auf die Shop Seite. Hier werden Produkte aufgelistet, die man 
 dann in den Warenkorb hinzufügen kann. Warum haben wir uns für den Namen "StaySafe" entschieden? Weil der Online-Shop ausschließlich hygiene Artikel wie
 z.B. Masken oder Desinfektionsmittel zum Verkauf anbietet. Wir haben das Theme des Online-Shops im Bezug auf die aktuelle Situation entwickelt, um den Kunden
