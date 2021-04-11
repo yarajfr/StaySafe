@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../shared/backend.service';
-import {Orders} from "../../shared/orders";
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpErrorResponse} from "@angular/common/http";
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import {Observable} from "rxjs";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Orders} from "../../service/data.service";
 
 
 @Component({
@@ -54,7 +54,7 @@ export class ReadComponent implements OnInit {
     }
   }
 
-  trackByData(index: number, orders: Orders): number { return orders.id; }
+  trackByData(index: number, data: Orders): number { return data.id; }
 
 
   readAll(): void {
@@ -66,15 +66,15 @@ export class ReadComponent implements OnInit {
     );
   }
 
-  readOne(ordersId: number): void {
-    this.cs.getOrdersById(ordersId).subscribe(
+  readOne(id: number): void {
+    this.cs.getDataById(id).subscribe(
       (response: Orders) => this.order = response,
       error => console.log(error)
     );
   }
 
-  update(orders: Orders): void {
-    this.order = orders;
+  update(data: Orders): void {
+    this.order = data;
     this.cs.updateById(this.order.id, this.order);
     this.router.navigateByUrl('/read');
   }

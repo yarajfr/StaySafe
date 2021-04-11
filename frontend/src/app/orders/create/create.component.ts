@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Data} from '../../shared/data';
 import {BackendService} from '../../shared/backend.service';
-import {Orders} from "../../shared/orders";
+import {HttpErrorResponse} from "@angular/common/http";
+import {Orders} from "../../service/data.service";
 
 @Component({
   selector: 'app-create',
@@ -13,7 +13,8 @@ import {Orders} from "../../shared/orders";
 export class CreateComponent implements OnInit {
 
   form: FormGroup;
-  orders: Orders;
+  data: Orders;
+  error: HttpErrorResponse;
 
   constructor(
   private cs: BackendService,
@@ -29,7 +30,7 @@ export class CreateComponent implements OnInit {
           orderNrControl: ['', Validators.required]
         }
     );
-    this.orders = { id: 0, firstname: '', lastname: '', email: '', orderNr: 0,};
+    this.data = { id: 0, firstname: '', lastname: '', email: '', orderNr: 0,};
   }
 
   ngOnInit(): void {
@@ -39,12 +40,12 @@ export class CreateComponent implements OnInit {
 
     console.warn(this.form.value);
     const values = this.form.value;
-    this.orders.firstname = values.firstNameControl;
-    this.orders.lastname = values.lastNameControl;
-    this.orders.email = values.emailControl;
-    this.orders.orderNr = values.orderNrControl;
-    console.log(this.orders);
-    this.cs.create(this.orders);
+    this.data.firstname = values.firstNameControl;
+    this.data.lastname = values.lastNameControl;
+    this.data.email = values.emailControl;
+    this.data.orderNr = values.orderNrControl;
+    console.log(this.data);
+    this.cs.create(this.data);
     this.router.navigate(['/read']);
   }
 

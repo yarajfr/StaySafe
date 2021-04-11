@@ -1,6 +1,7 @@
 const sql = require("../../DB/database");
 
 const Order = function(order) {
+    this.id = order.id;
     this.firstname = order.firstname;
     this.lastname = order.lastname;
     this.email = order.email;
@@ -21,7 +22,7 @@ Order.create = (newOrder, result) => {
 };
 
 Order.findById = (id, result) => {
-    sql.query(`SELECT * FROM orders WHERE id = ${id}`, (err, res) => {
+    sql.query(`SELECT * FROM orders WHERE id = ${orderId}`, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);

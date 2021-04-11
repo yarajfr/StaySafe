@@ -17,12 +17,13 @@
     </thead>
     <tbody>
     <tr *ngFor="let order of orders; let i=index; trackBy: trackByData">
-      <td>{{ i+1 }}</td>
+<!--      <td>{{ i+1 }}</td>-->
+      <td>{{order.id}}</td>
       <td>{{order.firstname}}</td>
       <td>{{order.lastname}}</td>
       <td>{{order.email}}</td>
       <td>{{order.orderNr}}</td>
-      <td><a [routerLink]="['/read/', order.id]">
+      <td><a [routerLink]="['/read', order.id]">
         <i-bs
           name="pencil-square"
           class="text-secondary"
@@ -41,17 +42,15 @@
   </table>
 </div>
 <div *ngIf="selectedId > 0" class="container">
-  <h1>{{ selectedId }}</h1>
-  <p>{{ order.id }}</p>
-  <p>{{ order.firstname }}</p>
-  <p>{{ order.lastname }}</p>
-  <p>{{ order.email }}</p>
-  <p>{{ order.orderNr }}</p>
-  <app-form [orders]="order"></app-form>
-  <p><a [routerLink]="['/read']">Zurück zur Tabelle</a></p>
-</div>
-<div *ngIf="order">
-  <app-form [orders]="order" (updateEvent)="update($event)"></app-form>
+  <div *ngIf="error">
+    <h1>{{ selectedId }}</h1>
+    <p>{{ error?.message }}</p>
+    <p>{{ error?.status }}</p>
+    <p><a [routerLink]="['/bearbeiten']">Zurück zur Tabelle</a></p>
+  </div>
+  <div *ngIf="order">
+    <app-update [data]="order" (updateEvent)="update($event)"></app-update>
+  </div>
 </div>
 
 <ng-template #content let-modal>
@@ -91,7 +90,7 @@
       <div class="form-group">
         <label for="inpON">Bestellungs-Nummer</label>
         <div class="input-group">
-          <input id="inpON" class="form-control" formControlName="orderNrControl" value="{{ order?.email }}" readonly>
+          <input id="inpON" class="form-control" formControlName="orderNrControl" value="{{ order?.orderNr }}" readonly>
         </div>
       </div>
     </form>

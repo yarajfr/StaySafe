@@ -4,7 +4,7 @@ exports.create = (req, res) => {
 
     if (!req.body) {
         res.status(400).send({
-            message: "Content can not be empty!"
+            message: "Der Inhalt kann nicht leer bleiben!"
         });
     }
 
@@ -20,7 +20,7 @@ Order.create(order, (err, data) => {
         if (err)
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Member."
+                    err.message || "Es sind Fehler beim Erstellen der Bestellungen aufgetreten"
             });
         else res.send(data);
     });
@@ -31,22 +31,22 @@ exports.findAll = (req, res) => {
         if (err)
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving orders."
+                    err.message || "Es sind Fehler beim Auslesen der Bestellungen aufgetreten"
             });
         else res.send(data);
     });
 };
 
 exports.findOne = (req, res) => {
-    Order.findById(req.params.id, (err, data) => {
+    Order.findById(req.params.orderId, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
                 res.status(404).send({
-                    message: `Not found Order with id ${req.params.id}.`
+                    message: `Die Bestellung mit der Nummer ${req.params.orderId} wurde nicht gefunden.`
                 });
             } else {
                 res.status(500).send({
-                    message: "Error retrieving Order with id " + req.params.id
+                    message: "Error retrieving Order with id " + req.params.orderId
                 });
             }
         } else res.send(data);
@@ -56,22 +56,22 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
     if (!req.body) {
         res.status(400).send({
-            message: "Content can not be empty!"
+            message: "Der Inhalt kann nicht leer sein."
         });
     }
 
     Order.updateById(
-        req.params.id,
+        req.params.orderId,
         new Order(req.body),
         (err, data) => {
             if (err) {
                 if (err.kind === "not_found") {
                     res.status(404).send({
-                        message: `Not found Order with id ${req.params.id}.`
+                        message: `Not found Order with id ${req.params.orderId}.`
                     });
                 } else {
                     res.status(500).send({
-                        message: "Error updating Order with id " + req.params.id
+                        message: "Error updating Order with id " + req.params.orderId
                     });
                 }
             } else res.send(data);
@@ -80,15 +80,15 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-    Order.remove(req.params.id, (err, data) => {
+    Order.remove(req.params.orderId, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
                 res.status(404).send({
-                    message: `Not found Order with id ${req.params.id}.`
+                    message: `Not found Order with id ${req.params.orderId}.`
                 });
             } else {
                 res.status(500).send({
-                    message: "Could not delete Order with id " + req.params.id
+                    message: "Could not delete Order with id " + req.params.orderId
                 });
             }
         } else res.send({ message: `Order was deleted successfully!` });

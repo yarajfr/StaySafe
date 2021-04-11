@@ -24,7 +24,6 @@ import { RegisterComponent } from './staysafe/register/register.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ProductItemComponent } from "./staysafe/productlist/product-item/product-item.component";
 import { NgxBootstrapIconsModule, pencilSquare, trash } from 'ngx-bootstrap-icons';
-import { FormComponent } from './orders/read/form/form.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -58,7 +57,6 @@ const icons = {
     LoginComponent,
     RegisterComponent,
     ProductItemComponent,
-    FormComponent,
 
   ],
   imports: [

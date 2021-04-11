@@ -5,7 +5,7 @@ import {UserLogin} from "./userlogin";
 import {UserRegister} from "./userregister";
 import { Cart } from "./cart";
 import { Product } from './product';
-import { Orders } from "./orders";
+import {Orders} from "../service/data.service";
 
 @Injectable({
   providedIn: 'root'
@@ -32,12 +32,12 @@ export class BackendService {
     return this.http.get<Orders[]>(this.baseUrl + '/orders');
   }
 
-  getOrdersById(ordersId: number): Observable<Orders> {
-    return this.http.get<Orders>(this.baseUrl + '/' + ordersId);
+  getDataById(dataId: number): Observable<Orders> {
+    return this.http.get<Orders>(this.baseUrl + '/' + dataId);
   }
 
-  updateById(ordersId: number, orders: Orders): void {
-    this.http.put<Orders>(this.baseUrl + '/' + ordersId, orders)
+  updateById(dataId: number, data: Orders): void {
+    this.http.put<Orders>(this.baseUrl + '/' + dataId, data)
       .subscribe(
         response => {
           console.log(response);
@@ -49,8 +49,8 @@ export class BackendService {
       );
   }
 
-  deleteOne(orderId: number): void {
-    this.http.delete<Orders>(this.baseUrl + '/' + orderId)
+  deleteOne(dataId: number): void {
+    this.http.delete<Orders>(this.baseUrl + '/' + dataId)
       .subscribe(
         response => {
           console.log(response);
@@ -62,8 +62,8 @@ export class BackendService {
       );
   }
 
-  create(orders: Orders): void {
-    this.http.post<Orders>(this.baseUrl, orders)
+  create(data: Orders): void {
+    this.http.post<Orders>(this.baseUrl, data)
       .subscribe(
         response => {
           console.log(response);

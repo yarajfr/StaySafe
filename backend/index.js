@@ -30,9 +30,10 @@ app.get('/user/:id', loginController.readIdAction);
 app.post('/user/login', loginController.loginAction);
 app.post('/user/register', loginController.registerAction);
 
+app.post("/orders", ordersController.create);
+
 app.get("/orders", ordersController.findAll);
 
-app.post("/orders", ordersController.create);
 
 app.get("/orders/:id", ordersController.findOne);
 
